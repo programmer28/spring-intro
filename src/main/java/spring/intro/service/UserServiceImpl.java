@@ -9,15 +9,7 @@ import spring.intro.model.User;
 
 @Service
 public class UserServiceImpl implements UserService {
-
-    //Bean autowiring strategies
-
-    //1. Using constructor
-    //2. Using setter
-    //3. Using field injection
-
     @Autowired
-    @Qualifier(value = "userDaoImpl")
     private UserDao userDao;
 
     @Override

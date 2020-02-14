@@ -2,14 +2,11 @@ package spring.intro;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import spring.intro.config.AppConfig;
-import spring.intro.dao.MyService;
 import spring.intro.model.User;
 import spring.intro.service.UserService;
 
 public class Main {
     public static void main(String[] args) {
-        //DI
-        //IoC
 
         //ApplicationContext
         AnnotationConfigApplicationContext context =
@@ -23,9 +20,5 @@ public class Main {
 
         //Get users
         userService.listUsers().forEach(System.out:: println);
-
-        MyService bean = context.getBean(MyService.class);
-        System.out.println(bean.sayHello());
-
     }
 }
