@@ -53,22 +53,24 @@ public class UserController {
 
     @GetMapping("/{userId}")
     public UserResponseDto get(@PathVariable Long userId) {
-        UserResponseDto dto = new UserResponseDto();
         User user = userService.get(userId);
-        dto.setName(user.getFirstName());
-        dto.setEmail(user.getEmail());
-        return dto;
+        return getUserResponseDto(user);
     }
 
     @GetMapping("/")
     public List<UserResponseDto> getAll() {
         List<UserResponseDto> list = new ArrayList<>();
-        userService.listUsers().forEach(u -> {
-            UserResponseDto dto = new UserResponseDto();
-            dto.setName(u.getFirstName());
-            dto.setEmail(u.getEmail());
+        userService.listUsers().forEach((u) -> {
+            UserResponseDto dto = getUserResponseDto(u);
             list.add(dto);
         });
         return list;
+    }
+
+    private UserResponseDto getUserResponseDto(User user) {
+        UserResponseDto dto = new UserResponseDto();
+        dto.setName(user.getFirstName());
+        dto.setEmail(user.getEmail());
+        return dto;
     }
 }
