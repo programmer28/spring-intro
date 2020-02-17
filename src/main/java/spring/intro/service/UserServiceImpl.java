@@ -2,7 +2,6 @@ package spring.intro.service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import spring.intro.dao.UserDao;
 import spring.intro.model.User;
@@ -15,6 +14,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void add(User user) {
         userDao.add(user);
+    }
+
+    @Override
+    public User get(Long id) {
+        return userDao.get(id);
     }
 
     @Override
